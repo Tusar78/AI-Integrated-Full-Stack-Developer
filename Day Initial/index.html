@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Light Toggle</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        
+        .light-container {
+            margin-bottom: 40px;
+            position: relative;
+        }
+        
+        .light {
+            width: 140px;
+            height: 220px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .light svg {
+            width: 100%;
+            height: 100%;
+            filter: drop-shadow(0 10px 25px rgba(0, 0, 0, 0.3));
+        }
+        
+        .light.on svg {
+            filter: drop-shadow(0 0 40px rgba(255, 235, 59, 0.8)) 
+                    drop-shadow(0 0 80px rgba(255, 235, 59, 0.6))
+                    drop-shadow(0 10px 25px rgba(0, 0, 0, 0.3));
+        }
+        
+        .bulb-glass {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .bulb-highlight {
+            opacity: 0.6;
+            transition: opacity 0.4s ease;
+        }
+        
+        .light.on .bulb-highlight {
+            opacity: 0.9;
+        }
+        
+        .bulb-base {
+            transition: all 0.4s ease;
+        }
+        
+        .bulb-thread {
+            fill: #4a5568;
+            transition: fill 0.4s ease;
+        }
+        
+        .light.on .bulb-thread {
+            fill: #2d3748;
+        }
+        
+        .bulb-filament {
+            stroke: #1a1a1a;
+            stroke-width: 1.5;
+            fill: none;
+            opacity: 0.2;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .light.on .bulb-filament {
+            stroke: #ffa726;
+            stroke-width: 2;
+            opacity: 1;
+            filter: drop-shadow(0 0 4px rgba(255, 167, 38, 0.8));
+        }
+        
+        button {
+            padding: 16px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+        }
+        
+        button:active {
+            transform: translateY(0);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+        
+        .status {
+            margin-top: 25px;
+            font-size: 22px;
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            letter-spacing: 0.5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="light-container">
+        <div id="light" class="light off">
+            <svg viewBox="0 0 120 200" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <!-- Gradient for bulb glass when OFF -->
+                    <linearGradient id="bulbOffGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#2d3748;stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:#1a202c;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#0f1419;stop-opacity:1" />
+                    </linearGradient>
+                    
+                    <!-- Gradient for bulb glass when ON -->
+                    <linearGradient id="bulbOnGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#fff9c4;stop-opacity:1" />
+                        <stop offset="30%" style="stop-color:#fff59d;stop-opacity:1" />
+                        <stop offset="60%" style="stop-color:#ffeb3b;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#fdd835;stop-opacity:1" />
+                    </linearGradient>
+                    
+                    <!-- Highlight gradient -->
+                    <linearGradient id="highlightGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                        <stop offset="0%" style="stop-color:#ffffff;stop-opacity:0.8" />
+                        <stop offset="50%" style="stop-color:#ffffff;stop-opacity:0.3" />
+                        <stop offset="100%" style="stop-color:#ffffff;stop-opacity:0" />
+                    </linearGradient>
+                    
+                    <!-- Metal base gradient -->
+                    <linearGradient id="baseGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#718096;stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:#4a5568;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#2d3748;stop-opacity:1" />
+                    </linearGradient>
+                    
+                    <!-- Thread gradient -->
+                    <linearGradient id="threadGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#4a5568;stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:#2d3748;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#1a202c;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                
+                <!-- Main bulb glass -->
+                <ellipse class="bulb-glass" cx="60" cy="80" rx="35" ry="50" fill="url(#bulbOffGradient)"/>
+                
+                <!-- Glass highlight -->
+                <ellipse class="bulb-highlight" cx="50" cy="70" rx="12" ry="20" fill="url(#highlightGradient)"/>
+                
+                <!-- Filament support structure -->
+                <line class="bulb-filament" x1="60" y1="60" x2="60" y2="100" stroke-linecap="round"/>
+                <line class="bulb-filament" x1="50" y1="70" x2="70" y2="70" stroke-linecap="round"/>
+                <line class="bulb-filament" x1="50" y1="85" x2="70" y2="85" stroke-linecap="round"/>
+                <line class="bulb-filament" x1="55" y1="75" x2="55" y2="90" stroke-linecap="round"/>
+                <line class="bulb-filament" x1="65" y1="75" x2="65" y2="90" stroke-linecap="round"/>
+                
+                <!-- Bulb neck (transition from glass to base) -->
+                <rect class="bulb-base" x="45" y="125" width="30" height="8" rx="2" fill="url(#baseGradient)"/>
+                
+                <!-- Threaded base -->
+                <rect class="bulb-thread" x="42" y="133" width="36" height="25" rx="3" fill="url(#threadGradient)"/>
+                
+                <!-- Thread lines for detail -->
+                <line x1="45" y1="138" x2="75" y2="138" stroke="#1a202c" stroke-width="0.5" opacity="0.6"/>
+                <line x1="45" y1="143" x2="75" y2="143" stroke="#1a202c" stroke-width="0.5" opacity="0.6"/>
+                <line x1="45" y1="148" x2="75" y2="148" stroke="#1a202c" stroke-width="0.5" opacity="0.6"/>
+                <line x1="45" y1="153" x2="75" y2="153" stroke="#1a202c" stroke-width="0.5" opacity="0.6"/>
+                
+                <!-- Base bottom -->
+                <rect class="bulb-base" x="50" y="158" width="20" height="12" rx="2" fill="url(#baseGradient)"/>
+            </svg>
+        </div>
+    </div>
+    <button id="toggleBtn">Turn On</button>
+    <div class="status" id="status">Light is OFF</div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
