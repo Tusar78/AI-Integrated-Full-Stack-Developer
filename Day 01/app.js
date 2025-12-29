@@ -14,11 +14,23 @@
 
 // console.log(cartTotal);
 
+// const discount = 0.1;
+// const tax = 0.05;
+// let subtotal = 1000;
+// subtotal -= subtotal * discount;
+// subtotal += subtotal * tax;
+// console.log("Final Price: " + subtotal);
+
+
 const discount = 0.1;
 const tax = 0.05;
+
 let subtotal = 1000;
-subtotal -= subtotal * discount;
-subtotal += subtotal * tax;
-console.log("Final Price: " + subtotal);
 
+let discountAmount = subtotal * discount
+let afterDiscount = subtotal - discountAmount;
 
+let taxAmount = subtotal * tax;
+let finalPrice = afterDiscount + taxAmount;
+
+console.log("Final Price: " + finalPrice);
