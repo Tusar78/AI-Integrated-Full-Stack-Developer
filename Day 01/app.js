@@ -59,12 +59,52 @@ Add a bonus if performance score is 80 or above.
 Apply tax only if the employee is not remote.
 */
 
-const baseSalary = 1000;
+// const baseSalary = 1000;
 
-let performanceScore = 95;
+// let performanceScore = 95;
+
+// const tax = 0.05;
+// const bonus = 0.1;
+
+// let isRemoteEmployee = false;
+
+
+// let finalSalary = baseSalary;
+
+// if (performanceScore >= 80) {
+//     let bonusAmmount = finalSalary * bonus;
+//     finalSalary += bonusAmmount;
+// }
+
+// if (!isRemoteEmployee) {
+//     let taxAmmount = finalSalary * tax;
+//     finalSalary += taxAmmount;
+// }
+
+// console.log(finalSalary);
+
+/*
+🧩 Phase 1 – Problem 1 (Twisted Version)
+Problem Name
+
+Calculate Final Salary with Bonus, Penalty, and Conditional Tax
+
+Problem Statement
+
+Given an employee’s base salary, performance score, and work type, calculate the final salary.
+Apply bonus or penalty based on performance.
+Apply tax only for specific employee types.
+
+*/
+
+
+const baseSalary = 1000;
 
 const tax = 0.05;
 const bonus = 0.1;
+const penalty = 0.05
+
+let performanceScore = 80;
 
 let isRemoteEmployee = false;
 
@@ -72,13 +112,18 @@ let isRemoteEmployee = false;
 let finalSalary = baseSalary;
 
 if (performanceScore >= 80) {
-    let bonusAmmount = finalSalary * bonus;
-    finalSalary += bonusAmmount;
+    let bonusAmount = baseSalary * bonus;
+    finalSalary += bonusAmount;
+}
+
+if (performanceScore < 50) {
+    let penaltyAmount = baseSalary * penalty;
+    finalSalary -= penaltyAmount;
 }
 
 if (!isRemoteEmployee) {
-    let taxAmmount = finalSalary * tax;
-    finalSalary += taxAmmount;
+    let taxAmount = finalSalary * tax;
+    finalSalary += taxAmount;
 }
 
 console.log(finalSalary);
