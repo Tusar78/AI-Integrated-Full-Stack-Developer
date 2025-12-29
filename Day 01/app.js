@@ -26,11 +26,18 @@ const discount = 0.1;
 const tax = 0.05;
 
 let subtotal = 1000;
+let isPremiumUser = false;
 
 let discountAmount = subtotal * discount
 let afterDiscount = subtotal - discountAmount;
 
-let taxAmount = subtotal * tax;
-let finalPrice = afterDiscount + taxAmount;
 
-console.log("Final Price: " + finalPrice);
+let finalPrice = afterDiscount;
+
+
+if (!isPremiumUser) {
+    let taxAmount = subtotal * tax;
+    finalPrice = afterDiscount + taxAmount;
+}
+
+console.log("Final Price for user: ", isPremiumUser ? "Premium" : "Regular", " = ", finalPrice);
