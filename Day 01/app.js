@@ -98,32 +98,66 @@ Apply tax only for specific employee types.
 */
 
 
-const baseSalary = 1000;
+// const baseSalary = 1000;
 
-const tax = 0.05;
-const bonus = 0.1;
-const penalty = 0.05
+// const tax = 0.05;
+// const bonus = 0.1;
+// const penalty = 0.05
 
-let performanceScore = 80;
+// let performanceScore = 80;
 
-let isRemoteEmployee = false;
+// let isRemoteEmployee = false;
 
 
-let finalSalary = baseSalary;
+// let finalSalary = baseSalary;
 
-if (performanceScore >= 80) {
-    let bonusAmount = baseSalary * bonus;
-    finalSalary += bonusAmount;
+// if (performanceScore >= 80) {
+//     let bonusAmount = baseSalary * bonus;
+//     finalSalary += bonusAmount;
+// }
+
+// if (performanceScore < 50) {
+//     let penaltyAmount = baseSalary * penalty;
+//     finalSalary -= penaltyAmount;
+// }
+
+// if (!isRemoteEmployee) {
+//     let taxAmount = finalSalary * tax;
+//     finalSalary += taxAmount;
+// }
+
+// console.log(finalSalary);
+
+/*
+
+🧩 Phase 1 – Problem 2
+Problem Name
+
+Determine User Access Level and System Message
+
+Problem Statement
+
+Given a user’s role, verification status, and account activity, determine access level and generate a system message.
+
+*/
+
+let userRole = "admin";
+let isVerified = true;
+let isActive = true;
+
+let accessLevel;
+let message;
+
+if (userRole === 'admin' && isActive === true) {
+    accessLevel = "FULL ACCESS";
+    message = "Welcome Admin, all systems available.";
+} else if (userRole === 'user' && isVerified === true && isActive === true) {
+    accessLevel = "Limited ACCESS";
+    message = "Welcome User, limited features enabled.";
+} else {
+    accessLevel = "NO ACCESS";
+    message = "Access denied. Please contact support.";
 }
 
-if (performanceScore < 50) {
-    let penaltyAmount = baseSalary * penalty;
-    finalSalary -= penaltyAmount;
-}
-
-if (!isRemoteEmployee) {
-    let taxAmount = finalSalary * tax;
-    finalSalary += taxAmount;
-}
-
-console.log(finalSalary);
+console.log(accessLevel);
+console.log(message);
