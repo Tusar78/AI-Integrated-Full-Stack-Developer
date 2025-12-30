@@ -141,23 +141,57 @@ Given a user’s role, verification status, and account activity, determine acce
 
 */
 
-let userRole = "admin";
-let isVerified = true;
-let isActive = true;
+// let userRole = "admin";
+// let isVerified = true;
+// let isActive = true;
 
-let accessLevel;
-let message;
+// let accessLevel;
+// let message;
 
-if (userRole === 'admin' && isActive === true) {
-    accessLevel = "FULL ACCESS";
-    message = "Welcome Admin, all systems available.";
-} else if (userRole === 'user' && isVerified === true && isActive === true) {
-    accessLevel = "Limited ACCESS";
-    message = "Welcome User, limited features enabled.";
+// if (userRole === 'admin' && isActive === true) {
+//     accessLevel = "FULL ACCESS";
+//     message = "Welcome Admin, all systems available.";
+// } else if (userRole === 'user' && isVerified === true && isActive === true) {
+//     accessLevel = "Limited ACCESS";
+//     message = "Welcome User, limited features enabled.";
+// } else {
+//     accessLevel = "NO ACCESS";
+//     message = "Access denied. Please contact support.";
+// }
+
+// console.log(accessLevel);
+// console.log(message);
+
+
+/*
+🧩 Phase 1 – Problem 3
+Problem Name
+
+Energy Usage Billing with Threshold-Based Charges
+
+Problem Statement
+
+Given energy usage data and billing rules, calculate the final bill amount.
+*/
+
+const baseUnitPrice = 5;
+const freeLimit = 200;
+const extraChargeRate = 0.08; // 8%
+
+let usedUnits = 205;
+
+let finalBill;
+
+if (usedUnits <= freeLimit) {
+    finalBill = usedUnits * baseUnitPrice;
 } else {
-    accessLevel = "NO ACCESS";
-    message = "Access denied. Please contact support.";
+    let baseBill = freeLimit * baseUnitPrice;
+
+    let excessUnits = usedUnits - freeLimit;
+    let excessBaseCost = excessUnits * baseUnitPrice;
+    let extraCharge = excessBaseCost * extraChargeRate;
+
+    finalBill = baseBill + excessBaseCost + extraCharge;
 }
 
-console.log(accessLevel);
-console.log(message);
+console.log(finalBill);
