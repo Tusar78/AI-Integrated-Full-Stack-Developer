@@ -346,89 +346,101 @@
 
 // postUser();
 
-// Task 01 — GET
-const URL = `https://jsonplaceholder.typicode.com/posts`;
-const getPost = async (url) => {
-  try {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error("Failed to fetch users");
-    const data = await response.json();
-    console.log(data);
-  } catch (error) {
-    console.log(error);
-  }
-};
+// // Task 01 — GET
+// const URL = `https://jsonplaceholder.typicode.com/posts`;
+// const getPost = async (url) => {
+//   try {
+//     const response = await fetch(url);
+//     if (!response.ok) throw new Error("Failed to fetch users");
+//     const data = await response.json();
+//     console.log(data);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
-getPost(URL);
+// getPost(URL);
 
-// Task 02 — Data Transformation
-const URL = `https://jsonplaceholder.typicode.com/posts`;
-const getPost = async (url) => {
-  try {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error("Failed to fetch users");
-    const posts = await response.json();
-    const preciseData = posts.map((post) => {
-      return {
-        id: post.id,
-        title: post.title,
-      };
-    });
-    console.log(preciseData);
-  } catch (error) {
-    console.log(error);
-  }
-};
+// // Task 02 — Data Transformation
+// const URL = `https://jsonplaceholder.typicode.com/posts`;
+// const getPost = async (url) => {
+//   try {
+//     const response = await fetch(url);
+//     if (!response.ok) throw new Error("Failed to fetch users");
+//     const posts = await response.json();
+//     const preciseData = posts.map((post) => {
+//       return {
+//         id: post.id,
+//         title: post.title,
+//       };
+//     });
+//     console.log(preciseData);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
-getPost(URL);
+// getPost(URL);
 
-// Task 03 -- Post
-const URL = `https://jsonplaceholder.typicode.com/users`;
-const setPost = async (url) => {
-  try {
-    const response = await fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        name: "Tusar",
-        role: "Web Developer",
-      }),
-    });
-    if (!response.ok) throw new Error("Failed to fetch users");
-    const users = await response.json();
-    console.log(users);
-  } catch (error) {
-    console.log(error);
-  }
-};
+// // Task 03 -- Post
+// const URL = `https://jsonplaceholder.typicode.com/users`;
+// const setPost = async (url) => {
+//   try {
+//     const response = await fetch(url, {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//       },
+//       body: JSON.stringify({
+//         name: "Tusar",
+//         role: "Web Developer",
+//       }),
+//     });
+//     if (!response.ok) throw new Error("Failed to fetch users");
+//     const users = await response.json();
+//     console.log(users);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
-setPost(URL);
+// setPost(URL);
 
-// Task 04 — 🔥 React Simulation
-const users = [
-  { name: "Tusar", active: true },
-  { name: "Rahim", active: false },
-  { name: "Karim", active: true },
-];
+// // Task 04 — 🔥 React Simulation
+// const users = [
+//   { name: "Tusar", active: true },
+//   { name: "Rahim", active: false },
+//   { name: "Karim", active: true },
+// ];
 
-const getUsers = async (usersdata) => {
-  console.log("Starting simulation...");
+// const getUsers = async (usersdata) => {
+//   console.log("Starting simulation...");
 
-  try {
-    const users = await new Promise((resolve) => {
-      setTimeout(() => resolve(usersdata), 1000);
-    });
+//   try {
+//     const users = await new Promise((resolve) => {
+//       setTimeout(() => resolve(usersdata), 1000);
+//     });
 
-    const usersName = users
-      .filter((user) => user.active)
-      .map((user) => user.name);
+//     const usersName = users
+//       .filter((user) => user.active)
+//       .map((user) => user.name);
 
-    console.log(usersName);
-  } catch (error) {
-    console.log(error);
-  }
-};
+//     console.log(usersName);
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
-getUsers(users);
+// getUsers(users);
+
+
+// Task 01
+// Answer: Tusar
+
+// // Task 02
+// Answer: arrow function er moddhe this er kono ostitto nei, arrow function tar scope er moddhe this create ba bind kore nah
+
+// // Task 03
+// Answer: karon class component data mone rakhto object instance (this) er maddhome kintu  functional component data mone rakhe closure er maddhome jeita onek beshi shohojboddho. 
+
+
