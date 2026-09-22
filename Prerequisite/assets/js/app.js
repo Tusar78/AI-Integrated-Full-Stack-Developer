@@ -433,7 +433,6 @@
 
 // getUsers(users);
 
-
 // Task 01
 // Answer: Tusar
 
@@ -441,6 +440,34 @@
 // Answer: arrow function er moddhe this er kono ostitto nei, arrow function tar scope er moddhe this create ba bind kore nah
 
 // // Task 03
-// Answer: karon class component data mone rakhto object instance (this) er maddhome kintu  functional component data mone rakhe closure er maddhome jeita onek beshi shohojboddho. 
+// Answer: karon class component data mone rakhto object instance (this) er maddhome kintu  functional component data mone rakhe closure er maddhome jeita onek beshi shohojboddho.
 
+const selector = (type) => document.querySelector(type);
 
+// Task 01
+const btn = selector(".btn");
+btn.addEventListener("click", () => {
+  console.log("Button Clicked!");
+});
+
+// Task 02
+const nameField = selector(".nameField");
+nameField.addEventListener("keyup", (event) => {
+  console.log(event.target.value);
+});
+
+// Task 03
+const greetBtn = selector(".greet");
+const greetUser = (name) => {
+  console.log(`Hello ${name}`);
+};
+greetBtn.addEventListener("click", () => {
+  return greetUser('Jannat');
+});
+
+// Task 04
+const textForm = selector('.textForm');
+textForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    console.log('Form Submitted');    
+})
