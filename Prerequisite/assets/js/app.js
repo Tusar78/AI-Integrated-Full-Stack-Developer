@@ -188,42 +188,247 @@
 // console.log(sum(10, 20, 30, 40));
 
 // Task 01
-const numbers = [1, 2, 3, 4, 5];
-const squireNumbers = numbers.map(number => number * 2);
-console.log(squireNumbers);
+// const numbers = [1, 2, 3, 4, 5];
+// const squireNumbers = numbers.map(number => number * 2);
+// console.log(squireNumbers);
 
-// Task 02
-const numbers = [10, 15, 20, 25, 30, 35];
-const newNumbers = numbers.filter((number) => number > 20);
-console.log(newNumbers);
+// // Task 02
+// const numbers = [10, 15, 20, 25, 30, 35];
+// const newNumbers = numbers.filter((number) => number > 20);
+// console.log(newNumbers);
 
-// Task 03
+// // Task 03
+// const users = [
+//   { id: 1, name: "Tusar" },
+//   { id: 2, name: "Rahim" },
+//   { id: 3, name: "Karim" },
+// ];
+
+// const newUser = users.find((user) => user.id === 3);
+// console.log(newUser);
+
+// // Task 04
+// const prices = [100, 200, 300, 400];
+// const sum = prices.reduce((sum, acc) => {
+//   return sum + acc;
+// }, 0);
+
+// console.log(sum);
+
+// // Task 05
+// const products = [
+//   { name: "Laptop", price: 100000, inStock: true },
+//   { name: "Mouse", price: 2000, inStock: false },
+//   { name: "Keyboard", price: 5000, inStock: true },
+//   { name: "Monitor", price: 30000, inStock: false },
+// ];
+
+// const productNames = products
+//   .filter((product) => product.inStock)
+//   .map((product) => product.name);
+// console.log(productNames);
+
+// console.log('Start');
+
+// setTimeout(() => {
+//     console.log('Tusar');
+// }, 1000)
+
+// console.log('end');
+
+// Task 01 — Promise
+// const promise = new Promise((resolve, reject) => {
+//   const success = true;
+//   if (success) {
+//     resolve("Success!");
+//   } else {
+//     reject("Failed!");
+//   }
+// });
+
+// promise
+//   .then((result) => {
+//     console.log(result);
+//   })
+//   .catch((error) => {
+//     console.log(error);
+//   });
+
+// // Task 02 — Async/Await
+// const newPromise = new Promise((resolve, reject) => {
+//   const success = true;
+//   if (success) {
+//     resolve("Hello from Promise!");
+//   } else {
+//     reject("Failed!");
+//   }
+// });
+
+// const getMessage = async (promise) => {
+//     try {
+//         const response = await Promise.resolve(promise)
+//         console.log(response);
+
+//     } catch (error) {
+//         console.log(error);
+
+//     }
+// }
+
+// getMessage(newPromise)
+
+// // Task 03
+// const promise = new Promise((resolve, reject) => {
+//   const success = false;
+//   if (success) {
+//     resolve("Successfully Learn The big library Reactjs");
+//   } else {
+//     reject("Promise intentionally reject!");
+//   }
+// });
+
+// const getData = async (promise) => {
+//     try {
+//         const response = await Promise.resolve(promise)
+//         console.log(response);
+
+//     } catch (error) {
+//         console.log(error);
+
+//     }
+// }
+
+// getData(promise)
+
+// // Task 04 and Task 05
+// const USERSAPI = 'https://jsonplaceholder.typicode.com/users';
+// const getUsers = async (userApi) => {
+//     try {
+//         const response = await fetch(userApi)
+//         const users = await response.json();
+
+//         // Get Name & Email From User
+//         const userInfo = users.map(user => {
+//             return {
+//                 name: user.name,
+//                 email: user.email
+//             }
+//         })
+
+//         console.log(userInfo);
+
+//     } catch (error) {
+//         console.log(error);
+
+//     }
+// }
+// getUsers(USERSAPI)
+
+// const USERSAPI = "https://jsonplaceholder.typicode.com/users";
+// const postUser = async () => {
+//   const response = await fetch(USERSAPI, {
+//     method: "POST",
+
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify({
+//       name: "Tusar",
+//       age: 28,
+//       role: "Web developer",
+//       email: "tusar@gmail.com",
+//     }),
+//   })
+//   const data = await response.json();
+//   console.log(data);
+
+// };
+
+// postUser();
+
+// Task 01 — GET
+const URL = `https://jsonplaceholder.typicode.com/posts`;
+const getPost = async (url) => {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error("Failed to fetch users");
+    const data = await response.json();
+    console.log(data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+getPost(URL);
+
+// Task 02 — Data Transformation
+const URL = `https://jsonplaceholder.typicode.com/posts`;
+const getPost = async (url) => {
+  try {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error("Failed to fetch users");
+    const posts = await response.json();
+    const preciseData = posts.map((post) => {
+      return {
+        id: post.id,
+        title: post.title,
+      };
+    });
+    console.log(preciseData);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+getPost(URL);
+
+// Task 03 -- Post
+const URL = `https://jsonplaceholder.typicode.com/users`;
+const setPost = async (url) => {
+  try {
+    const response = await fetch(url, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: "Tusar",
+        role: "Web Developer",
+      }),
+    });
+    if (!response.ok) throw new Error("Failed to fetch users");
+    const users = await response.json();
+    console.log(users);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+setPost(URL);
+
+// Task 04 — 🔥 React Simulation
 const users = [
-  { id: 1, name: "Tusar" },
-  { id: 2, name: "Rahim" },
-  { id: 3, name: "Karim" },
+  { name: "Tusar", active: true },
+  { name: "Rahim", active: false },
+  { name: "Karim", active: true },
 ];
 
-const newUser = users.find((user) => user.id === 3);
-console.log(newUser);
+const getUsers = async (usersdata) => {
+  console.log("Starting simulation...");
 
-// Task 04
-const prices = [100, 200, 300, 400];
-const sum = prices.reduce((sum, acc) => {
-  return sum + acc;
-}, 0);
+  try {
+    const users = await new Promise((resolve) => {
+      setTimeout(() => resolve(usersdata), 1000);
+    });
 
-console.log(sum);
+    const usersName = users
+      .filter((user) => user.active)
+      .map((user) => user.name);
 
-// Task 05
-const products = [
-  { name: "Laptop", price: 100000, inStock: true },
-  { name: "Mouse", price: 2000, inStock: false },
-  { name: "Keyboard", price: 5000, inStock: true },
-  { name: "Monitor", price: 30000, inStock: false },
-];
+    console.log(usersName);
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-const productNames = products
-  .filter((product) => product.inStock)
-  .map((product) => product.name);
-console.log(productNames);
+getUsers(users);
