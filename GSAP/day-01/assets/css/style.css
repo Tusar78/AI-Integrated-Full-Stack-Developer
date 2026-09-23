@@ -1,0 +1,28 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* .box-wrap {
+    width: 500px;
+    height: 500px;
+    border: 1px solid red;
+}
+
+.box {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}
+
+.hero-title {
+  opacity: 0;
+  transform: translateY(50px);
+} */
+
+.card {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+}

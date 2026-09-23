@@ -442,32 +442,101 @@
 // // Task 03
 // Answer: karon class component data mone rakhto object instance (this) er maddhome kintu  functional component data mone rakhe closure er maddhome jeita onek beshi shohojboddho.
 
+// const selector = (type) => document.querySelector(type);
+
+// // Task 01
+// const btn = selector(".btn");
+// btn.addEventListener("click", () => {
+//   console.log("Button Clicked!");
+// });
+
+// // Task 02
+// const nameField = selector(".nameField");
+// nameField.addEventListener("keyup", (event) => {
+//   console.log(event.target.value);
+// });
+
+// // Task 03
+// const greetBtn = selector(".greet");
+// const greetUser = (name) => {
+//   console.log(`Hello ${name}`);
+// };
+// greetBtn.addEventListener("click", () => {
+//   return greetUser('Jannat');
+// });
+
+// // Task 04
+// const textForm = selector('.textForm');
+// textForm.addEventListener('submit', (event) => {
+//     event.preventDefault();
+//     console.log('Form Submitted');
+// })
+
+// Task 01
+// const user = {
+//   name: "Tusar",
+//   role: "Web Developer",
+//   experience: 3.5
+// };
+
+// const userJSON = JSON.stringify(user);
+// console.log(userJSON);
+// console.log(typeof userJSON)
+
+// // Task 02
+// const data = '{"name":"Tusar","role":"Web Developer","age":25}';
+// const dataObj = JSON.parse(data);
+// for (const key in dataObj) {
+//     const element = `${key}: ${dataObj[key]}`;
+
+//     console.log(element);
+// }
+
+// // Task 03
+// const product = {
+//   name: "Laptop",
+//   price: 80000,
+//   inStock: true
+// };
+
+// const productJSON = JSON.stringify(product);
+// const parsedProduct = JSON.parse(productJSON);
+// console.log(parsedProduct.name);
+
 const selector = (type) => document.querySelector(type);
 
 // Task 01
-const btn = selector(".btn");
-btn.addEventListener("click", () => {
-  console.log("Button Clicked!");
-});
+const title = selector(".title");
+title.textContent = "New Title";
 
 // Task 02
-const nameField = selector(".nameField");
-nameField.addEventListener("keyup", (event) => {
-  console.log(event.target.value);
+const card = selector(".card");
+const toggleBtn = selector(".toggle");
+
+toggleBtn.addEventListener("click", () => {
+  card.classList.toggle("active");
 });
 
 // Task 03
-const greetBtn = selector(".greet");
-const greetUser = (name) => {
-  console.log(`Hello ${name}`);
-};
-greetBtn.addEventListener("click", () => {
-  return greetUser('Jannat');
+const users = ["Tusar", "Jannat", "Aopo"];
+const usersUl = selector(".users");
+users.forEach((user) => {
+  const li = document.createElement("li");
+  li.textContent = user;
+  usersUl.append(li);
 });
 
 // Task 04
-const textForm = selector('.textForm');
-textForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    console.log('Form Submitted');    
-})
+const countH1 = selector(".count");
+const countBtn = selector(".count-btn");
+
+let count = 0;
+const handleCount = () => {
+  count++;
+  countH1.textContent = `Count ${count}`;
+};
+
+countBtn.addEventListener("click", handleCount);
+
+
+Answer: karon reactjs a menually bole deya lage na dom k j ami ki korbo. react a amra state change kori tokhon react er virtual dom ta auto detect kore ui update kore
