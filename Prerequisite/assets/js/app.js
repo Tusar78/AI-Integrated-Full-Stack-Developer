@@ -503,40 +503,57 @@
 // const parsedProduct = JSON.parse(productJSON);
 // console.log(parsedProduct.name);
 
-const selector = (type) => document.querySelector(type);
+// const selector = (type) => document.querySelector(type);
 
-// Task 01
-const title = selector(".title");
-title.textContent = "New Title";
+// // Task 01
+// const title = selector(".title");
+// title.textContent = "New Title";
 
-// Task 02
-const card = selector(".card");
-const toggleBtn = selector(".toggle");
+// // Task 02
+// const card = selector(".card");
+// const toggleBtn = selector(".toggle");
 
-toggleBtn.addEventListener("click", () => {
-  card.classList.toggle("active");
-});
+// toggleBtn.addEventListener("click", () => {
+//   card.classList.toggle("active");
+// });
 
-// Task 03
-const users = ["Tusar", "Jannat", "Aopo"];
-const usersUl = selector(".users");
-users.forEach((user) => {
-  const li = document.createElement("li");
-  li.textContent = user;
-  usersUl.append(li);
-});
+// // Task 03
+// const users = ["Tusar", "Jannat", "Aopo"];
+// const usersUl = selector(".users");
+// users.forEach((user) => {
+//   const li = document.createElement("li");
+//   li.textContent = user;
+//   usersUl.append(li);
+// });
 
-// Task 04
-const countH1 = selector(".count");
-const countBtn = selector(".count-btn");
+// // Task 04
+// const countH1 = selector(".count");
+// const countBtn = selector(".count-btn");
 
-let count = 0;
-const handleCount = () => {
-  count++;
-  countH1.textContent = `Count ${count}`;
-};
+// let count = 0;
+// const handleCount = () => {
+//   count++;
+//   countH1.textContent = `Count ${count}`;
+// };
 
-countBtn.addEventListener("click", handleCount);
+// countBtn.addEventListener("click", handleCount);
 
 
-Answer: karon reactjs a menually bole deya lage na dom k j ami ki korbo. react a amra state change kori tokhon react er virtual dom ta auto detect kore ui update kore
+// Answer: karon reactjs a menually bole deya lage na dom k j ami ki korbo. react a amra state change kori tokhon react er virtual dom ta auto detect kore ui update kore
+
+
+// const useState = initialValue => {
+//   let state = initialValue;
+//   const setState = newValue => {
+//     state = newValue
+//   }
+
+//   return [state, setState]
+// }
+
+
+// const [state, setState] = useState(0);
+// setState(1)
+// console.log(setState(1));
+
+

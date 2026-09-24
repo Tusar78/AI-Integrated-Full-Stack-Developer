@@ -182,3 +182,72 @@
     border-right-color: var(--border);
   }
 }
+
+
+.hero-wrap {
+  margin-bottom: 40px;
+}
+
+.card-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+}
+
+.profile-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 30px 20px;
+  text-align: center;
+  transition: transform 0.2s ease-in-out;
+}
+
+.profile-card:hover {
+  transform: translateY(-5px);
+}
+
+.profile-image {
+  width: 100px;
+  height: 100px;
+  background-color: #e0e0e0;
+  border-radius: 50%;
+  margin: 0 auto 15px auto;
+}
+
+.profile-name {
+  margin: 0;
+  font-size: 1.5rem;
+  color: #333333;
+}
+
+.profile-role {
+  color: #007bff;
+  font-weight: bold;
+  margin: 10px 0 5px 0;
+}
+
+.profile-experience {
+  color: #666666;
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+}
+
+.profile-status {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: bold;
+}
+
+/* You can use a ternary operator in React to switch between these two classes based on the boolean value */
+.profile-status.available {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.profile-status.unavailable {
+  background-color: #f8d7da;
+  color: #721c24;
+}
