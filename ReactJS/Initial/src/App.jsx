@@ -1,35 +1,53 @@
-import { useState } from 'react';
-import './App.css'
+import { useState } from "react";
+import "./App.css";
 
+const ShowSkill = ({ skill }) => {
+  return (
+    <>
+      <h2 className="skill">{skill}</h2>
+    </>
+  );
+};
 const App = () => {
-  const [user, setUser] = useState({
-    name: 'Tusar',
-    profile: {
-      role: 'Developer',
-      experience: 4, 
-    }
-  })
+  const [skills, setSkills] = useState(["JavaScript", "NextJS", "ReactJS"]);
+  const [inputValue, setInputValue] = useState("");
+  const handleAddSkill = (newSkill) => {
+    setSkills((prevSkill) => [...prevSkill, newSkill]);
+  };
 
-  const handleRole = () => {
-    setUser(prevUser => ({
-      ...prevUser,
-      profile: {
-        ...prevUser.profile,
-        role: 'Full Stack Developer'
-      }
-    }))
-  }
+  const handleChange = (e) => {
+    setInputValue(e.target.value);
+  };
+  const handleRemoveSkill = (newSkill) => {
+    console.log(newSkill);
+
+    setSkills((prevSkills) => {
+      return prevSkills.filter(
+        (skill) => skill.toLowerCase() !== newSkill.toLowerCase(),
+      );
+    });
+  };
 
   return (
     <>
-      <h1>My Name: {user.name}</h1>
-      <h2>My Role: {user.profile.role}</h2>
-      <h2>My Role: {user.profile.experience}</h2>
-      <p>{user.isOnline ? "Online" : "Offline"}</p>
+      <h1>My Skills Are: </h1>
+      <div className="skills">
+        {skills.map((skill) => (
+          <ShowSkill key={skill} skill={skill} />
+        ))}
+      </div>
 
-      <button onClick={handleRole}>Change Role</button>
+      <div className="btn-list">
+        <input type="text" onChange={(e) => handleChange(e)} />
+        <button className="btn" onClick={() => handleAddSkill(inputValue)}>
+          Add Skill
+        </button>
+        <button className="btn" onClick={() => handleRemoveSkill(inputValue)}>
+          Remove Skill
+        </button>
+      </div>
     </>
-  )
-}
+  );
+};
 
 export default App;
