@@ -1,62 +1,35 @@
-import { use, useState } from "react";
-import "./App.css";
-
-function Counter() {
-  let [count, setCount] = useState(0);
-  // console.log(count);
-
-  const handleCounter = (option) => {
-    if (option === "increase") {
-      setCount((count) => count + 1);
-      setCount((count) => count + 1);
-      setCount((count) => count + 1);
-      console.log(count);
-    } else if (option === "decrease") {
-      setCount(count - 1);
-    } else {
-      setCount(0);
-    }
-  };
-
-  return (
-    <>
-      <h2>{count}</h2>
-
-      <div className="btn-list">
-        <button className="btn" onClick={() => handleCounter("increase")}>
-          Increase
-        </button>
-        <button
-          className="btn"
-          disabled={count < 1}
-          onClick={() => handleCounter("decrease")}
-        >
-          Decrease
-        </button>
-        <button className="btn" onClick={() => handleCounter("reset")}>
-          Reset
-        </button>
-      </div>
-    </>
-  );
-}
+import { useState } from 'react';
+import './App.css'
 
 const App = () => {
-  const [counter, setCounter] = useState(0);
-  const handleClick = () => {
-    console.log("Before:", counter);
+  const [user, setUser] = useState({
+    name: 'Tusar',
+    profile: {
+      role: 'Developer',
+      experience: 4, 
+    }
+  })
 
-    setCounter((prevCounter) => prevCounter + 3);
-
-    console.log("After:", counter);
-  };
+  const handleRole = () => {
+    setUser(prevUser => ({
+      ...prevUser,
+      profile: {
+        ...prevUser.profile,
+        role: 'Full Stack Developer'
+      }
+    }))
+  }
 
   return (
     <>
-      <h2>{counter}</h2>
-      <button onClick={handleClick}>Increase</button>
+      <h1>My Name: {user.name}</h1>
+      <h2>My Role: {user.profile.role}</h2>
+      <h2>My Role: {user.profile.experience}</h2>
+      <p>{user.isOnline ? "Online" : "Offline"}</p>
+
+      <button onClick={handleRole}>Change Role</button>
     </>
-  );
-};
+  )
+}
 
 export default App;
