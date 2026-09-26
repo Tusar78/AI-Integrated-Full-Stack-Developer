@@ -1,112 +1,60 @@
-import { useState } from "react";
+import { use, useState } from "react";
 import "./App.css";
 
-const Hero = () => {
-  return (
-    <section className="hero-wrap">
-      <h1>Expert Profiles</h1>
-      <p>Learn React by building real applications.</p>
-    </section>
-  );
-};
+function Counter() {
+  let [count, setCount] = useState(0);
+  // console.log(count);
 
-const ProfileCard = ({ data }) => {
-  const [isHired, setIsHired] = useState(false);
-  const [like, setLike] = useState(false);
-
-  const {
-    name,
-    role,
-    experiences,
-    isAvailableForHire,
-  } = data;
-
-  const handleHire = () => {
-    setIsHired(true);
+  const handleCounter = (option) => {
+    if (option === "increase") {
+      setCount((count) => count + 1);
+      setCount((count) => count + 1);
+      setCount((count) => count + 1);
+      console.log(count);
+    } else if (option === "decrease") {
+      setCount(count - 1);
+    } else {
+      setCount(0);
+    }
   };
-
-  const handleLike = () => {
-    setLike(!like);
-  }
-
-  return (
-    <div className="profile-card">
-      <div className="profile-image"></div>
-
-      <h2 className="profile-name">{name}</h2>
-
-      <p className="profile-role">{role}</p>
-
-      <p className="profile-experience">{experiences}</p>
-
-      {isAvailableForHire ? (
-        <button onClick={handleHire}>
-          {isHired ? "Hired" : "Hire"}
-        </button>
-      ) : (
-        <button disabled>Not Available</button>
-      )}
-
-      <button onClick={handleLike}>{like ? '♥ Liked' : '♡ Like'}</button>
-
-    </div>
-  );
-};
-
-const App = () => {
-  const profilesData = [
-    {
-      id: 1,
-      name: "Tusar Ali",
-      role: "Frontend Webflow Developer",
-      experiences: "4 Years",
-      isAvailableForHire: false,
-    },
-    {
-      id: 2,
-      name: "Jannatul Mawa Jannat",
-      role: "UI/UX Designer",
-      experiences: "2 Years",
-      isAvailableForHire: true,
-    },
-    {
-      id: 3,
-      name: "Aopo Roy",
-      role: "Backend Engineer",
-      experiences: "3 Years",
-      isAvailableForHire: false,
-    },
-    {
-      id: 4,
-      name: "Salman Mahmud",
-      role: "Full-Stack Developer",
-      experiences: "1 Year",
-      isAvailableForHire: true,
-    },
-    {
-      id: 5,
-      name: "Tania Sultana Asha",
-      role: "Project Manager",
-      experiences: "5 Years",
-      isAvailableForHire: false,
-    },
-    {
-      id: 6,
-      name: "Tafhim",
-      role: "QA Tester",
-      experiences: "2 Years",
-      isAvailableForHire: true,
-    },
-  ];
 
   return (
     <>
-      <Hero />
-      <div className="card-list">
-        {profilesData.map((data) => (
-          <ProfileCard key={data.id} data={data} />
-        ))}
+      <h2>{count}</h2>
+
+      <div className="btn-list">
+        <button className="btn" onClick={() => handleCounter("increase")}>
+          Increase
+        </button>
+        <button
+          className="btn"
+          disabled={count < 1}
+          onClick={() => handleCounter("decrease")}
+        >
+          Decrease
+        </button>
+        <button className="btn" onClick={() => handleCounter("reset")}>
+          Reset
+        </button>
       </div>
+    </>
+  );
+}
+
+const App = () => {
+  const [counter, setCounter] = useState(0);
+  const handleClick = () => {
+    console.log("Before:", counter);
+
+    setCounter((prevCounter) => prevCounter + 3);
+
+    console.log("After:", counter);
+  };
+
+  return (
+    <>
+      <h2>{counter}</h2>
+      <button onClick={handleClick}>Increase</button>
     </>
   );
 };

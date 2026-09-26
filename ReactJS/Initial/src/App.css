@@ -251,3 +251,19 @@
   background-color: #f8d7da;
   color: #721c24;
 }
+
+.btn-list {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.btn {
+  padding: 0.5rem 1.25rem;
+  font-size: 16px;
+}
+
+.btn.disabled{
+  background-color: #d4edda;
+  color: red;
+}
