@@ -11,21 +11,23 @@ const ShowSkill = ({ skill }) => {
 const App = () => {
   const [skills, setSkills] = useState(["JavaScript", "NextJS", "ReactJS"]);
   const [inputValue, setInputValue] = useState("");
+
   const handleAddSkill = (newSkill) => {
     setSkills((prevSkill) => [...prevSkill, newSkill]);
+    setInputValue("");
   };
 
   const handleChange = (e) => {
     setInputValue(e.target.value);
   };
-  const handleRemoveSkill = (newSkill) => {
-    console.log(newSkill);
-
+  const handleRemoveSkill = (newSkill) => {    
     setSkills((prevSkills) => {
       return prevSkills.filter(
         (skill) => skill.toLowerCase() !== newSkill.toLowerCase(),
       );
     });
+
+    setInputValue("");
   };
 
   return (
@@ -38,7 +40,7 @@ const App = () => {
       </div>
 
       <div className="btn-list">
-        <input type="text" onChange={(e) => handleChange(e)} />
+        <input type="text" value={inputValue} onChange={(e) => handleChange(e)} />
         <button className="btn" onClick={() => handleAddSkill(inputValue)}>
           Add Skill
         </button>
