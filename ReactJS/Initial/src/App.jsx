@@ -8,8 +8,9 @@ const App = () => {
   return (
     <>
       {/* <ShowSkills /> */}
-    
-      <Products />
+      {/* <Products /> */}
+
+      
     </>
   );
 };
