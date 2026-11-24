@@ -1,7 +1,8 @@
 
-import "./App.css";
-import { Products } from "./Products/Products";
-import ShowSkills from "./ShowSkills/ShowSkills";
+// import "./App.css";
+// import { Products } from "./Products/Products";
+// import ShowSkills from "./ShowSkills/ShowSkills";
+import Task from "./TaskManager/Task";
 
 
 const App = () => {  
@@ -10,7 +11,7 @@ const App = () => {
       {/* <ShowSkills /> */}
       {/* <Products /> */}
 
-      
+      <Task />
     </>
   );
 };
