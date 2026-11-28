@@ -1,41 +1,57 @@
-import { useState } from "react";
-import Header from "./Header/Header";
-import Profile from "./Profile/Profile";
+import React from "react";
 
 const App = () => {
-  const [user, setUser] = useState({
-    name: "Tusar",
-    role: "Web Developer",
-    isOnline: true,
-  });
+  const [cart, setCart] = React.useState([
+    {
+      id: 1,
+      name: "Webflow Template",
+      quantity: 1,
+    },
+    {
+      id: 2,
+      name: "UI Kit",
+      quantity: 2,
+    },
+  ]);
 
+  const handleIncrease = (id) => {
+    setCart((prevCart) =>
+      prevCart.map((product) =>
+        product.id === id
+          ? { ...product, quantity: product.quantity + 1 }
+          : product,
+      ),
+    );
+  };
 
-  const handleRoleChange = () => {
-    setUser({
-      ...user,
-      role: 'Full Stack Developer'
-    })
-  }
-
-  const handleToggle = () => {
-    setUser({
-      ...user,
-      isOnline: !user.isOnline
-    })
-  }
+  const handleDecrease = (id) => {
+    setCart((prevCart) =>
+      prevCart.map((product) =>
+        product.id === id
+          ? { ...product, quantity: product.quantity > 0 ? product.quantity - 1 : product.quantity }
+          : product,
+      ),
+    );
+  };
 
   return (
     <>
-      <div>
-        <h2>Name: {user.name}</h2>
-        <p>Role: {user.role}</p>
-        {user.isOnline ? <p>Available</p> : <p>Not Available</p> }
-        <button onClick={handleRoleChange}>Role Change</button>
-        <br/>
-        <button onClick={handleToggle}>
-          {user.isOnline ? "Go Offline" : "Go Online"}
-        </button>
-      </div>
+      {cart.map((product) => (
+        <div
+          key={product.id}
+          style={{ border: "1px solid red", margin: "10px" }}
+        >
+          <h2>Name : {product.name}</h2>
+          <p>Quantity : {product.quantity}</p>
+          <button onClick={() => handleIncrease(product.id)}>
+            Increase Quantity
+          </button>
+          <br />
+          <button onClick={() => handleDecrease(product.id)}>
+            Decrease Quantity
+          </button>
+        </div>
+      ))}
     </>
   );
 };
